@@ -19,9 +19,22 @@ margin-bottom: 3vh;
 
 .buttons {
 border: solid 1px black;
-height: 45vw;
+height: 60vh;
 width: 40vw;
 background-color: blue;
+display: flex;
 
+}
 
+.button-row{
+  display: flex;
+  justify-content: row;
+}
+
+.button{
+border: 1px solid black;
+justify-content: row;
+align-items: center;
+height: 7vh;
+flex: 1;
 }
