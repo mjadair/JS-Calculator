@@ -23,20 +23,23 @@ height: 60vh;
 width: 40vw;
 background-color: blue;
 justify-content: row;
-align-items: flex-end;
 display: flex;
-
+flex-wrap: wrap;
 }
 
 .button-row{
   display: flex;
   flex-direction: row;
   width: 40vw;
+  /* flex-wrap: wrap; */
 
 }
 
 .button{
+margin: 1vh;
 border: 1px solid black;
+text-align: center;
+border-radius: 20%;
 height: 7vh;
 width: 20vw;
 }
