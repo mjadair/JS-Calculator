@@ -10,21 +10,36 @@
 
 .display {
 border: solid 1px black; 
-background-color: red;
+/* background-color: red; */
 height: 12vh;
 margin-bottom: 3vh;
-
+font-family: 'Orbitron', sans-serif;
+font-size: 7vw;
+display: flex;
+flex-wrap: wrap;
+flex-shrink: 1;
 }
+
+p{
+  font-size: 7vw;
+  margin: 0;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  align-items: center;
+  flex-shrink: 1;
+}
+
 
 
 .buttons {
 border: solid 1px black;
 height: 60vh;
 width: 40vw;
-background-color: blue;
+/* background-color: blue; */
 justify-content: row;
 display: flex;
 flex-wrap: wrap;
+
 }
 
 .button-row{
@@ -36,10 +51,15 @@ flex-wrap: wrap;
 }
 
 .button{
+display: flex;
+align-items: center;
+justify-content: center;
 margin: 1vh;
+padding: 1vh;
 border: 1px solid black;
 text-align: center;
 border-radius: 20%;
 height: 7vh;
 width: 20vw;
+font-family: 'Orbitron', sans-serif;
 }
