@@ -12,6 +12,12 @@ function setupCalculator() {
     if (this.innerHTML === 'AC') {
       userInputOne = []
       return display.innerHTML = 0
+    }
+    if (this.innerHTML === '⌫') {
+      userInputOne.pop()
+      if (userInputOne.length > 0) {
+        return display.innerHTML = `${userInputOne.join('')}`
+      } else return display.innerHTML = 0
     } else {
       userInputOne.push(parseFloat(this.innerHTML))
       return display.innerHTML = `${userInputOne.join('')}`
