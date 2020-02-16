@@ -6,14 +6,18 @@ function setupCalculator() {
 
   const button = document.getElementsByClassName('button')
   let display = document.querySelector('.user-input')
-  display.innerHTML = `${userInputOne.join('')}`
+  display.innerHTML = 0
 
-  const addNumber = function() {
-    userInputOne.push(parseFloat(this.innerHTML))
-    console.log(userInputOne.join(''))
-    return display.innerHTML = `${userInputOne.join('')}`
+  const addNumber = function () {
+    if (this.innerHTML === 'AC') {
+      userInputOne = []
+      return display.innerHTML = 0
+    } else {
+      userInputOne.push(parseFloat(this.innerHTML))
+      return display.innerHTML = `${userInputOne.join('')}`
+    }
   }
- 
+
 
   Array.from(button).forEach((element) => {
     element.addEventListener('click', addNumber)
