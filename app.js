@@ -14,7 +14,7 @@ function setupCalculator() {
 
   const addNumber = function () {
     //input resizing================================================================
-    console.log(this.innerHTML)
+    // console.log(this.innerHTML)
     if (numberInput.length === 10) {
       display.style.fontSize = '5vw'
       display.style.marginTop = '6vw'
@@ -42,20 +42,29 @@ function setupCalculator() {
       equations.push(parseFloat(...(numberInput.join('').split())))
       equations.push('+')
       numberInput = []
-      console.log(equations)
+      // console.log(equations)
       return display.innerHTML = `${this.innerHTML}`
     } if (this.innerHTML === '=') {
       equations.push(parseFloat(...(numberInput.join('').split())))
       numberInput = []
-      return display.innerHTML = `${(equations.join(' '))}`
+      console.log(...equations)
+      const solution = equations.map((element, index) => {
+        if (element === '+') {
+          return ((element[index - 1]) + (element[index + 1]))
+        } else {
+          console.log(element)
+        }
+      })
+      console.log(solution)
+      return display.innerHTML = `${(solution.join(' '))}`
     } else {
       numberInput.push(parseFloat(this.innerHTML))
-      console.log(parseFloat('+'))
+      // console.log(parseFloat('+'))
       return display.innerHTML = `${numberInput.join('')}`
     }
   }
 
-  
+
 
 
   Array.from(button).forEach((element) => {
