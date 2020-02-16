@@ -13,17 +13,21 @@ function setupCalculator() {
 
 
   const addNumber = function () {
+    //input resizing================================================================
     console.log(userInputOne.length)
     if (userInputOne.length === 10) {
       display.style.fontSize = '5vw'
+      display.style.marginTop = '6vw'
     } if (userInputOne.length === 14) {
       display.style.fontSize = '4vw'
+      display.style.marginTop = '7vw'
     }
 
     //Reset button===================================================================
     if (this.innerHTML === 'AC') {
       userInputOne = []
       display.style.fontSize = '7vw'
+      display.style.marginTop = '4vw'
       return display.innerHTML = 0
     }
     //Backspace button================================================================
