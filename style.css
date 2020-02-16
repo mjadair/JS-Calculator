@@ -15,18 +15,19 @@ height: 12vh;
 margin-bottom: 3vh;
 font-family: 'Orbitron', sans-serif;
 font-size: 7vw;
-display: flex;
-flex-wrap: wrap;
-flex-shrink: 1;
+justify-content: flex-end;
 }
+
+
 
 p{
   font-size: 7vw;
   margin: 0;
+  flex: 1;
   justify-content: flex-end;
-  flex-wrap: wrap;
-  align-items: center;
-  flex-shrink: 1;
+  overflow: hidden;
+  text-align: end;
+  
 }
 
 
