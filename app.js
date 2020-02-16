@@ -8,7 +8,14 @@ function setupCalculator() {
   let display = document.querySelector('.user-input')
   display.innerHTML = 0
 
+
+
+
   const addNumber = function () {
+    console.log(display)
+    if (userInputOne.length > 11) {
+      display.style.fontSize('5vw')
+    }
     if (this.innerHTML === 'AC') {
       userInputOne = []
       return display.innerHTML = 0
