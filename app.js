@@ -1,17 +1,23 @@
 function setupCalculator() {
 
-const nine = document.querySelector("#9")
-const eight = document.querySelector("#8")
-const seven = document.querySelector("#7")
-const six = document.querySelector("#6")
-const five = document.querySelector("#5")
-const four = document.querySelector("#4")
-const three = document.querySelector("#3")
-const two = document.querySelector("#2")
-const one = document.querySelector("#1")
-const zero = document.querySelector("#0")
+  let userInputOne = []
+  let operator = ''
+  let userInputTwo = []
 
+  const button = document.getElementsByClassName('button')
+  let display = document.querySelector('.user-input')
+  display.innerHTML = `${userInputOne.join('')}`
 
+  const addNumber = function() {
+    userInputOne.push(parseFloat(this.innerHTML))
+    console.log(userInputOne.join(''))
+    return display.innerHTML = `${userInputOne.join('')}`
+  }
+ 
+
+  Array.from(button).forEach((element) => {
+    element.addEventListener('click', addNumber)
+  })
 
 }
 document.addEventListener('DOMContentLoaded', setupCalculator)
