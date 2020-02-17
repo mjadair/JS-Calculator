@@ -38,9 +38,9 @@ function setupCalculator() {
         return display.innerHTML = `${numberInput.join('')}`
       } else return display.innerHTML = 0
       //Number input=======================================================================
-    } if (this.innerHTML === '+') {
+    } if (this.innerHTML === '+' || this.innerHTML === '-' || this.innerHTML === '×' || this.innerHTML === '÷') {
       equations.push(parseFloat(...(numberInput.join('').split())))
-      equations.push('+')
+      equations.push(this.innerHTML)
       numberInput = []
       // console.log(equations)
       return display.innerHTML = `${this.innerHTML}`
@@ -48,11 +48,22 @@ function setupCalculator() {
       equations.push(parseFloat(...(numberInput.join('').split())))
       numberInput = []
       console.log(...equations)
-      const solution = equations.map((element, index) => {
-        if (element === '+') {
-          return ((element[index - 1]) + (element[index + 1]))
-        } else {
-          console.log(element)
+      const solution = equations.filter((element, index, array) => {
+        console.log(array)
+        switch (element) {
+          case '+':
+            (array[index - 1]) + (array[index + 1])
+            console.log(element)
+            break
+          case '-':
+            (array[index - 1]) - (array[index + 1])
+            break
+          case '×':
+            (array[index - 1]) * (array[index + 1])
+            break
+          case '÷':
+            (array[index - 1]) / (array[index + 1])
+            break
         }
       })
       console.log(solution)
