@@ -52,7 +52,7 @@ function setupCalculator() {
       // console.log(...equations)
       const solution = equations.map((element, index, array) => {
         // console.log(array)
-        switch (element) {
+        switch (element) { 
           case '+':
             return (array[index - 1]) + (array[index + 1])
           case '-':
@@ -73,7 +73,7 @@ function setupCalculator() {
       return
     } else {
       numberInput.push(parseFloat(this.innerHTML))
-      // console.log(parseFloat('+'))
+      console.log(parseFloat('+'))
       return display.innerHTML = `${numberInput.join('')}`
     }
   }
