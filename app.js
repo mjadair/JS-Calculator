@@ -37,37 +37,40 @@ function setupCalculator() {
       if (numberInput.length > 0) {
         return display.innerHTML = `${numberInput.join('')}`
       } else return display.innerHTML = 0
-      //Number input=======================================================================
+
+      //Operator input=======================================================================
     } if (this.innerHTML === '+' || this.innerHTML === '-' || this.innerHTML === '×' || this.innerHTML === '÷') {
       equations.push(parseFloat(...(numberInput.join('').split())))
       equations.push(this.innerHTML)
       numberInput = []
-      // console.log(equations)
       return display.innerHTML = `${this.innerHTML}`
+
+      //Calculate ===============================================================================
     } if (this.innerHTML === '=') {
       equations.push(parseFloat(...(numberInput.join('').split())))
       numberInput = []
-      console.log(...equations)
-      const solution = equations.filter((element, index, array) => {
-        console.log(array)
+      // console.log(...equations)
+      const solution = equations.map((element, index, array) => {
+        // console.log(array)
         switch (element) {
           case '+':
-            (array[index - 1]) + (array[index + 1])
-            console.log(element)
-            break
+            return (array[index - 1]) + (array[index + 1])
           case '-':
-            (array[index - 1]) - (array[index + 1])
-            break
+            return (array[index - 1]) - (array[index + 1])
           case '×':
-            (array[index - 1]) * (array[index + 1])
-            break
+            return (array[index - 1]) * (array[index + 1])
           case '÷':
-            (array[index - 1]) / (array[index + 1])
-            break
+            return (array[index - 1]) / (array[index + 1])
+          default:
+            return
         }
-      })
+      }).filter(element => element).reduce((a, b) => a + b, 0)
       console.log(solution)
-      return display.innerHTML = `${(solution.join(' '))}`
+      display.innerHTML = `${solution}`
+      console.log(equations)
+      equations = [solution].filter(element => element)
+      console.log(equations)
+      return
     } else {
       numberInput.push(parseFloat(this.innerHTML))
       // console.log(parseFloat('+'))
