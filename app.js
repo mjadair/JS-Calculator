@@ -2,8 +2,7 @@ function setupCalculator() {
 
   let numberInput = []
   let equations = []
-  let operator = ''
-  let userInputTwo = []
+  let solutions = []
 
   const button = document.getElementsByClassName('button')
   const display = document.querySelector('.user-input')
@@ -52,28 +51,34 @@ function setupCalculator() {
       // console.log(...equations)
       const solution = equations.map((element, index, array) => {
         // console.log(array)
-        switch (element) { 
+        switch (element) {
           case '+':
-            return (array[index - 1]) + (array[index + 1])
+            solutions.push((array[index - 1]) + (array[index + 1]))
+            console.log(solutions)
+            break
           case '-':
-            return (array[index - 1]) - (array[index + 1])
+            solutions.push(array[index - 1]) - (array[index + 1])
+            break
           case '×':
-            return (array[index - 1]) * (array[index + 1])
+            solutions.push(array[index - 1]) * (array[index + 1])
+            break
           case '÷':
-            return (array[index - 1]) / (array[index + 1])
+            solutions.push(array[index - 1]) / (array[index + 1])
+            break
           default:
             return
         }
       }).filter(element => element).reduce((a, b) => a + b, 0)
+  
       console.log(solution)
       display.innerHTML = `${solution}`
-      console.log(equations)
+     
       equations = [solution].filter(element => element)
-      console.log(equations)
+   
       return
     } else {
       numberInput.push(parseFloat(this.innerHTML))
-      console.log(parseFloat('+'))
+  
       return display.innerHTML = `${numberInput.join('')}`
     }
   }
