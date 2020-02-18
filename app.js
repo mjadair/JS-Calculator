@@ -17,10 +17,10 @@ function setupCalculator() {
     // console.log(this.innerHTML)
     if (numberInput.length === 10) {
       display.style.fontSize = '5vw'
-      display.style.marginTop = '6vw'
+      // display.style.marginTop = '6vw'
     } if (numberInput.length === 14) {
       display.style.fontSize = '4vw'
-      display.style.marginTop = '7vw'
+      // display.style.marginTop = '7vw'
     }
 
     //Reset button===================================================================
@@ -28,7 +28,7 @@ function setupCalculator() {
       numberInput = []
       equations = []
       display.style.fontSize = '7vw'
-      display.style.marginTop = '4vw'
+      // display.style.marginTop = '4vw'
       return display.innerHTML = 0
     }
     //Backspace button================================================================
