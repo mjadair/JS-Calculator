@@ -12,6 +12,7 @@ function setupCalculator() {
 
 
   const addNumber = function () {
+    console.log(solutions)
     //input resizing================================================================
     // console.log(this.innerHTML)
     if (numberInput.length === 10) {

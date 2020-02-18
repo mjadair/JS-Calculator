@@ -13,23 +13,22 @@ border: solid 1px black;
 height: 12vh;
 margin-bottom: 3vh;
 font-family: 'Orbitron', sans-serif;
-font-size: 7vw;
-align-items: stretch;
-/* justify-content: baseline;
-align-items: baseline; */
+font-size: 8vh;
+justify-content: flex-end;
+display: inline-flex;
+
 }
 
 
 
-p{
-  /* font-size: 7vw; */
-  flex: 1;
+ p{
   margin: 0;
-  padding: 0;
-  overflow: hidden;
+  overflow: hidden; 
   text-align: end;
+  display: flex;
+  align-items: flex-end; 
   
-}
+} 
 
 
 
@@ -46,7 +45,6 @@ flex-wrap: wrap;
   display: flex;
   flex-direction: row-reverse;
   width: 60vw;
-  /* flex-wrap: wrap; */
 
 }
 
