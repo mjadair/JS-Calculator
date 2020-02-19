@@ -55,7 +55,6 @@ function setupCalculator() {
         switch (element) {
           case '+':
             solutions.push((array[index - 1]) + (array[index + 1]))
-            console.log(solutions)
             break
           case '-':
             solutions.push(array[index - 1]) - (array[index + 1])
@@ -71,7 +70,6 @@ function setupCalculator() {
         }
       }).filter(element => element).reduce((a, b) => a + b, 0)
   
-      console.log(solution)
       display.innerHTML = `${solution}`
      
       equations = [solution].filter(element => element)
