@@ -5,6 +5,7 @@
   border: solid 5px black;
   padding: 1vw;
   flex-direction: column;
+  background-color: aquamarine;
 }
 
 
@@ -16,6 +17,7 @@ font-family: 'Orbitron', sans-serif;
 font-size: 8vh;
 justify-content: flex-end;
 display: inline-flex;
+background-color: blanchedalmond;
 
 }
 
@@ -39,6 +41,7 @@ width: 60vw;
 display: flex;
 flex-wrap: wrap;
 
+
 }
 
 .button-row{
@@ -60,6 +63,7 @@ border-radius: 20%;
 height: 7vh;
 width: 20vw;
 font-family: 'Orbitron', sans-serif;
+background-color: cadetblue;
 }
 
 
@@ -74,5 +78,10 @@ font-family: 'Orbitron', sans-serif;
 
 .operator-button{
   
+}
+
+
+#reset{
+  background-color: coral
 }
 

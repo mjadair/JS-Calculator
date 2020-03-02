@@ -9,6 +9,8 @@ function setupCalculator() {
   display.innerHTML = 0
 
   const addNumber = function () {
+
+
     //input resizing================================================================
     if (numberInput.length === 10) {
       display.style.fontSize = '5vw'
@@ -76,7 +78,11 @@ function setupCalculator() {
 
       return
     } else {
-      numberInput.push(parseFloat(this.innerHTML))
+      if (numberInput.length >= 19) {
+        console.log('done')
+        return
+      } else
+        numberInput.push(parseFloat(this.innerHTML))
       console.log(numberInput)
 
       return display.innerHTML = `${numberInput.join('')}`
