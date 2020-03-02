@@ -65,38 +65,48 @@ function setupCalculator() {
     if (this.innerHTML === '=') {
       equations.push(parseFloat(...(numberInput.join('').split())))
       numberInput = []
-      console.log(equations)
+      // console.log(equations)
 
-      // for ( let i = 0; i < equations.length; i++) {
+      // while (equations.length >= 3) {
       const solution = equations.map((element, index, array) => {
-        // console.log(array)
-        switch (element) {
-          case '+':
-            solutions.push((array[index - 1]) + (array[index + 1]))
-            console.log(solutions)
-            equations.splice(index - 1, 3)
-            equations.unshift(solutions[0])
-            break
-          case '-':
-            solutions.push((array[index - 1]) - (array[index + 1]))
-            equations.splice(index - 1, 3)
-            equations.unshift(solutions[0])
-            break
-          case '×':
-            solutions.push((array[index - 1]) * (array[index + 1]))
-            equations.splice(index - 1, 3)
-            equations.unshift(solutions[0])
-            break
-          case '÷':
-            solutions.push((array[index - 1]) / (array[index + 1]))
-            equations.splice(index - 1, 3)
-            equations.unshift(solutions[0])
-            break
-          // default:
-          //   return
+        for (let i = 1; i < equations.length; i++) {
+          switch (element) {
+            case '+':
+              solutions.push((array[index - 1]) + (array[index + 1]))
+              //console.log(solutions)
+              // console.log(equations)
+              // console.log(array)
+              equations.splice(index - 1, 3)
+              // console.log(equations)
+              // console.log(array)
+              equations.unshift(solutions[0])
+              // console.log(equations)
+              // console.log(array)
+
+              console.log(solution)
+              break
+            case '-':
+              solutions.push((array[index - 1]) - (array[index + 1]))
+              equations.splice(index - 1, 3)
+              equations.unshift(solutions[0])
+              break
+            case '×':
+              solutions.push((array[index - 1]) * (array[index + 1]))
+              equations.splice(index - 1, 3)
+              equations.unshift(solutions[0])
+              break
+            case '÷':
+              solutions.push((array[index - 1]) / (array[index + 1]))
+              equations.splice(index - 1, 3)
+              equations.unshift(solutions[0])
+              break
+            // default:
+            //   return
+          }
         }
       })
-      //  }
+      
+      //   }
       let answer = solutions.filter(element => element).reduce((a, b) => a + b, 0)
       display.innerHTML = `${answer}`
 
