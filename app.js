@@ -8,29 +8,23 @@ function setupCalculator() {
   const display = document.querySelector('.user-input')
   display.innerHTML = 0
 
-
-
-
   const addNumber = function () {
-    console.log(solutions)
     //input resizing================================================================
-    // console.log(this.innerHTML)
     if (numberInput.length === 10) {
       display.style.fontSize = '5vw'
-      // display.style.marginTop = '6vw'
     } if (numberInput.length === 14) {
       display.style.fontSize = '4vw'
-      // display.style.marginTop = '7vw'
     }
 
     //Reset button===================================================================
     if (this.innerHTML === 'AC') {
       numberInput = []
       equations = []
+      solutions = []
       display.style.fontSize = '7vw'
-      // display.style.marginTop = '4vw'
       return display.innerHTML = 0
     }
+
     //Backspace button================================================================
     if (this.innerHTML === '⌫') {
       numberInput.pop()
@@ -49,35 +43,42 @@ function setupCalculator() {
     } if (this.innerHTML === '=') {
       equations.push(parseFloat(...(numberInput.join('').split())))
       numberInput = []
-      // console.log(...equations)
+      console.log(equations)
       const solution = equations.map((element, index, array) => {
         // console.log(array)
         switch (element) {
           case '+':
             solutions.push((array[index - 1]) + (array[index + 1]))
+            array.splice(array[index - 1], 3)
             break
           case '-':
-            solutions.push(array[index - 1]) - (array[index + 1])
+            solutions.push((array[index - 1]) - (array[index + 1]))
+            array.splice(array[index - 1], 3)
             break
           case '×':
-            solutions.push(array[index - 1]) * (array[index + 1])
+            solutions.push((array[index - 1]) * (array[index + 1]))
+            array.splice(array[index - 1], 3)
             break
           case '÷':
-            solutions.push(array[index - 1]) / (array[index + 1])
+            solutions.push((array[index - 1]) / (array[index + 1]))
+            array.splice(array[index - 1], 3)
             break
           default:
             return
         }
-      }).filter(element => element).reduce((a, b) => a + b, 0)
-  
-      display.innerHTML = `${solution}`
-     
+      })
+
+      display.innerHTML = `${solutions.filter(element => element).reduce((a, b) => a + b, 0)}`
+
       equations = [solution].filter(element => element)
-   
+
+      console.log(equations)
+
       return
     } else {
       numberInput.push(parseFloat(this.innerHTML))
-  
+      console.log(numberInput)
+
       return display.innerHTML = `${numberInput.join('')}`
     }
   }
