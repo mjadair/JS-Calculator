@@ -44,7 +44,7 @@ function setupCalculator() {
       console.log(mergedNum)
       solutions.push([mergedNum].reduce((accumulator, element) => {
         return accumulator + element
-      }, solutions.length >= 1 ? 0 : numberInput[0]))
+      }, solutions.length >= 1 ? solutions[0] : 0))
 
       console.log(solutions)
       numberInput = []
@@ -96,8 +96,9 @@ function setupCalculator() {
 
       // equations = [solution].filter(element => element)
       numberInput = []
+      console.log(solutions)
+      solutions.length > 1 ? solutions.unshift() : null
       numberInput.push(solutions[0])
-      solutions = []
       console.log(numberInput)
 
       return
