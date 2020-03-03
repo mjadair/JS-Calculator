@@ -68,11 +68,12 @@ function setupCalculator() {
       // console.log(equations)
 
       // while (equations.length >= 3) {
-      const solution = equations.map((element, index, array) => {
+      const solution = equations.reduce((accumulator, element, index, array) => {
         for (let i = 1; i < equations.length; i++) {
           switch (element) {
             case '+':
-              solutions.push((array[index - 1]) + (array[index + 1]))
+              solutions.push(accumulator + (array[index - 1]) + (array[index + 1]))
+              console.log(accumulator)
               //console.log(solutions)
               // console.log(equations)
               // console.log(array)
@@ -83,7 +84,7 @@ function setupCalculator() {
               // console.log(equations)
               // console.log(array)
 
-              console.log(solution)
+              // console.log(solution)
               break
             case '-':
               solutions.push((array[index - 1]) - (array[index + 1]))
@@ -104,7 +105,7 @@ function setupCalculator() {
             //   return
           }
         }
-      })
+      }, 0)
       
       //   }
       let answer = solutions.filter(element => element).reduce((a, b) => a + b, 0)
