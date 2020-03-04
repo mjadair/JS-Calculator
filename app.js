@@ -56,7 +56,7 @@ function setupCalculator() {
         for (let i = 1; i < equations.length; i++) {
           switch (element) {
             case '+':
-              solutions.push((array[index - 1]) + (array[index + 1]))
+              solutions.push((equations[index - 1]) + (equations[index + 1]))
               console.log('Equations:' + equations)
               console.log('Solutions:' + solutions)
               equations.splice(index - 1, 3)
@@ -70,16 +70,19 @@ function setupCalculator() {
             case '-':
               solutions.push((array[index - 1]) - (array[index + 1]))
               equations.splice(index - 1, 3)
+              solutions.length >= 2 ? solutions.shift() : console.log('solution has one')
               equations.unshift(solutions[0])
               break
             case '×':
               solutions.push((array[index - 1]) * (array[index + 1]))
               equations.splice(index - 1, 3)
+              solutions.length >= 2 ? solutions.shift() : console.log('solution has one')
               equations.unshift(solutions[0])
               break
             case '÷':
               solutions.push((array[index - 1]) / (array[index + 1]))
               equations.splice(index - 1, 3)
+              solutions.length >= 2 ? solutions.shift() : console.log('solution has one')
               equations.unshift(solutions[0])
               break
             default:
