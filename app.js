@@ -36,23 +36,6 @@ function setupCalculator() {
 
       //Operator input=======================================================================
     }
-
-    // if (this.innerHTML === '+') {
-    //   const mergedNum = parseFloat(numberInput.join('').split()[0])
-    //   // console.log(parseFloat(...(numberInput.join('').split())))
-    //   // console.log(parseFloat(numberInput.join('').split()))
-    //   solutions.push([mergedNum].reduce((accumulator, element) => {
-    //     return accumulator + element
-    //   }, solutions.length >= 1 ? solutions[0] : 0))
-
-
-    //   numberInput = []
-    //   return display.innerHTML = `${this.innerHTML}`
-
-
-
-
-
     if (this.innerHTML === '+' || this.innerHTML === '-' || this.innerHTML === '×' || this.innerHTML === '÷') {
       equations.push(parseFloat(...(numberInput.join('').split())))
       equations.push(this.innerHTML)
@@ -65,26 +48,14 @@ function setupCalculator() {
     if (this.innerHTML === '=') {
       equations.push(parseFloat(...(numberInput.join('').split())))
       numberInput = []
-      // console.log(equations)
 
-      // while (equations.length >= 3) {
-      const solution = equations.reduce((accumulator, element, index, array) => {
+      const solution = equations.map((element, index, array) => {
         for (let i = 1; i < equations.length; i++) {
           switch (element) {
             case '+':
-              solutions.push(accumulator + (array[index - 1]) + (array[index + 1]))
-              console.log(accumulator)
-              //console.log(solutions)
-              // console.log(equations)
-              // console.log(array)
+              solutions.push((array[index - 1]) + (array[index + 1]))
               equations.splice(index - 1, 3)
-              // console.log(equations)
-              // console.log(array)
               equations.unshift(solutions[0])
-              // console.log(equations)
-              // console.log(array)
-
-              // console.log(solution)
               break
             case '-':
               solutions.push((array[index - 1]) - (array[index + 1]))
@@ -101,30 +72,18 @@ function setupCalculator() {
               equations.splice(index - 1, 3)
               equations.unshift(solutions[0])
               break
-            // default:
-            //   return
+            default:
+              return
           }
         }
-      }, 0)
+      })
       
-      //   }
       let answer = solutions.filter(element => element).reduce((a, b) => a + b, 0)
       display.innerHTML = `${answer}`
 
       numberInput = [answer]
       equations = []
       solutions = []
-      // console.log(numberInput)
-      // console.log(equations)
-
-
-      // equations = [solution].filter(element => element)
-      // numberInput = []
-      // console.log(solutions)
-      // solutions.length > 1 ? solutions.shift() : null
-      // console.log(solutions)
-      // numberInput.push(solutions[0])
-      // console.log(numberInput)
 
       return
     } else {
@@ -133,7 +92,6 @@ function setupCalculator() {
         return
       } else
         numberInput.push(parseFloat(this.innerHTML))
-      // console.log(numberInput)
 
       return display.innerHTML = `${numberInput.join('')}`
     }
