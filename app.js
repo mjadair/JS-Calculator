@@ -10,10 +10,6 @@ function setupCalculator() {
 
   const addNumber = function () {
 
-    console.log('Equations:' + equations)
-    console.log('Solutions:' + solutions)
-
-
     //input resizing================================================================
     if (numberInput.length === 10) {
       display.style.fontSize = '5vw'
@@ -52,10 +48,8 @@ function setupCalculator() {
       equations.push(parseFloat(...(numberInput.join('').split())))
       numberInput = []
 
-      while (equations.length >= 3) {
-        // debugger
-        const solution = equations.map((element, index, array) => {
-          debugger;
+      const solution = equations.map((element, index, array) => {
+        for (let i = 1; i <= equations.length; i++) {
           switch (element) {
             case '×':
               solutions.push((array[index - 1]) * (array[index + 1]))
@@ -71,15 +65,11 @@ function setupCalculator() {
               break
             case '+':
               solutions.push((equations[index - 1]) + (equations[index + 1]))
-              console.log('Equations:' + equations)
-              console.log('Solutions:' + solutions)
               equations.splice(index - 1, 3)
-              console.log('Equations:' + equations)
-              console.log('Solutions:' + solutions)
               solutions.length >= 2 ? solutions.shift() : console.log('solution has one')
               equations.unshift(solutions[0])
-              console.log('Equations:' + equations)
-              console.log('Solutions:' + solutions)
+              // console.log('Equations:' + equations)
+              // console.log('Solutions:' + solutions)
               break
             case '-':
               solutions.push((array[index - 1]) - (array[index + 1]))
@@ -87,12 +77,9 @@ function setupCalculator() {
               solutions.length >= 2 ? solutions.shift() : console.log('solution has one')
               equations.unshift(solutions[0])
               break
-            // default:
-            //   return
           }
-
-        })
-      }
+        }
+      })
 
       let answer = solutions.filter(element => element).reduce((a, b) => a + b, 0)
       display.innerHTML = `${answer}`
@@ -104,7 +91,6 @@ function setupCalculator() {
       return
     } else {
       if (numberInput.length >= 19) {
-        console.log('done')
         return
       } else
         numberInput.push(parseFloat(this.innerHTML))
@@ -112,7 +98,6 @@ function setupCalculator() {
       return display.innerHTML = `${numberInput.join('')}`
     }
   }
-
 
   Array.from(button).forEach((element) => {
     element.addEventListener('click', addNumber)
