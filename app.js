@@ -53,24 +53,15 @@ function setupCalculator() {
       numberInput = []
 
       while (equations.length >= 3) {
+        // debugger
         const solution = equations.map((element, index, array) => {
-
+          debugger;
           switch (element) {
-            case NaN:
-              // equations.pop()
-              // console.log('removed nan', equations)
-              break
             case '×':
               solutions.push((array[index - 1]) * (array[index + 1]))
-              console.log('Equations:' + equations)
-              console.log('Solutions:' + solutions)
               equations.splice(index - 1, 3)
-              console.log('Equations:' + equations)
-              console.log('Solutions:' + solutions)
               solutions.length >= 2 ? solutions.shift() : console.log('solution has one')
               equations.unshift(solutions[0])
-              console.log('Equations:' + equations)
-              console.log('Solutions:' + solutions)
               break
             case '÷':
               solutions.push((array[index - 1]) / (array[index + 1]))
