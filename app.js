@@ -52,9 +52,32 @@ function setupCalculator() {
       equations.push(parseFloat(...(numberInput.join('').split())))
       numberInput = []
 
-      const solution = equations.map((element, index, array) => {
-        for (let i = 1; i < equations.length; i++) {
+      while (equations.length >= 3) {
+        const solution = equations.map((element, index, array) => {
+
           switch (element) {
+            case NaN:
+              // equations.pop()
+              // console.log('removed nan', equations)
+              break
+            case '×':
+              solutions.push((array[index - 1]) * (array[index + 1]))
+              console.log('Equations:' + equations)
+              console.log('Solutions:' + solutions)
+              equations.splice(index - 1, 3)
+              console.log('Equations:' + equations)
+              console.log('Solutions:' + solutions)
+              solutions.length >= 2 ? solutions.shift() : console.log('solution has one')
+              equations.unshift(solutions[0])
+              console.log('Equations:' + equations)
+              console.log('Solutions:' + solutions)
+              break
+            case '÷':
+              solutions.push((array[index - 1]) / (array[index + 1]))
+              equations.splice(index - 1, 3)
+              solutions.length >= 2 ? solutions.shift() : console.log('solution has one')
+              equations.unshift(solutions[0])
+              break
             case '+':
               solutions.push((equations[index - 1]) + (equations[index + 1]))
               console.log('Equations:' + equations)
@@ -73,24 +96,13 @@ function setupCalculator() {
               solutions.length >= 2 ? solutions.shift() : console.log('solution has one')
               equations.unshift(solutions[0])
               break
-            case '×':
-              solutions.push((array[index - 1]) * (array[index + 1]))
-              equations.splice(index - 1, 3)
-              solutions.length >= 2 ? solutions.shift() : console.log('solution has one')
-              equations.unshift(solutions[0])
-              break
-            case '÷':
-              solutions.push((array[index - 1]) / (array[index + 1]))
-              equations.splice(index - 1, 3)
-              solutions.length >= 2 ? solutions.shift() : console.log('solution has one')
-              equations.unshift(solutions[0])
-              break
-            default:
-              return
+            // default:
+            //   return
           }
-        }
-      })
-      
+
+        })
+      }
+
       let answer = solutions.filter(element => element).reduce((a, b) => a + b, 0)
       display.innerHTML = `${answer}`
 
