@@ -57,11 +57,7 @@ function setupCalculator() {
           switch (element) {
             case '×':
               solutions.push((array[index - 1]) * (array[index + 1]))
-              console.log('Equations:' + equations)
-              console.log('Solutions:' + solutions)
               equations.splice(index - 1, 3)
-              console.log('Equations:' + equations)
-              console.log('Solutions:' + solutions)
               solutions.length >= 2 ? solutions.shift() : console.log('solution has one')
               equations.unshift(solutions[0])
               break

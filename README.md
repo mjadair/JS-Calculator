@@ -109,7 +109,7 @@ I noticed on many calculator apps that the text resized to allow more input, so 
       display.style.fontSize = '4vw'
     }
 ```
-
+The main difficulty of this task, which I still haven't quite managed is to solve running equations. 
 
 
 
