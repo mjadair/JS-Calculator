@@ -25,9 +25,11 @@ I decided to build this basic calculator to make sure I was well prepared for th
 
 The intention was to use the tools that the students I would be helping would use to refamiliarise myself with the basics that they would encounter. 
 
-The first step was to build a simple calculator using HTML and CSS:
+### Appearance
 
-![](screenshots/screenshot1.png) 
+The first step was to build a simple calculator case using HTML and CSS:
+
+<img src=screenshots/screenshot1.png height=200>
 
 In the HTML, there are a number of divs that represent the different parts of the calculator:
 
@@ -83,7 +85,30 @@ flex-wrap: wrap;
 
 ```
 
+### Logic 
 
+The logic is written with vanilla JavaScript.
+
+The buttons that have a class of button are selected on the DOM and an event listener is added for clicks
+
+```js
+  Array.from(button).forEach((element) => {
+    element.addEventListener('click', addNumber)
+  })
+```
+
+
+The `addNumber` function is where the complexity is.
+
+I noticed on many calculator apps that the text resized to allow more input, so I did this here:
+
+```js
+  if (numberInput.length === 12) {
+      display.style.fontSize = '5vw'
+    } if (numberInput.length === 18) {
+      display.style.fontSize = '4vw'
+    }
+```
 
 
 
