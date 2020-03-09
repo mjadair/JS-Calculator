@@ -11,9 +11,9 @@ function setupCalculator() {
   const addNumber = function () {
 
     //input resizing================================================================
-    if (numberInput.length === 10) {
+    if (numberInput.length === 12) {
       display.style.fontSize = '5vw'
-    } if (numberInput.length === 14) {
+    } if (numberInput.length === 18) {
       display.style.fontSize = '4vw'
     }
 
@@ -22,7 +22,7 @@ function setupCalculator() {
       numberInput = []
       equations = []
       solutions = []
-      display.style.fontSize = '7vw'
+      display.style.fontSize = '8vw'
       return display.innerHTML = 0
     }
 
@@ -48,12 +48,20 @@ function setupCalculator() {
       equations.push(parseFloat(...(numberInput.join('').split())))
       numberInput = []
 
+      const operatorsLength = equations.filter((element) => {
+        return element === '+' || element === '-'  || element === '÷' || element === '×'
+      }).length
+
       const solution = equations.map((element, index, array) => {
-        for (let i = 1; i <= equations.length; i++) {
+        for (let i = 1; i <= operatorsLength; i++) {
           switch (element) {
             case '×':
               solutions.push((array[index - 1]) * (array[index + 1]))
+              console.log('Equations:' + equations)
+              console.log('Solutions:' + solutions)
               equations.splice(index - 1, 3)
+              console.log('Equations:' + equations)
+              console.log('Solutions:' + solutions)
               solutions.length >= 2 ? solutions.shift() : console.log('solution has one')
               equations.unshift(solutions[0])
               break
@@ -68,8 +76,6 @@ function setupCalculator() {
               equations.splice(index - 1, 3)
               solutions.length >= 2 ? solutions.shift() : console.log('solution has one')
               equations.unshift(solutions[0])
-              // console.log('Equations:' + equations)
-              // console.log('Solutions:' + solutions)
               break
             case '-':
               solutions.push((array[index - 1]) - (array[index + 1]))
